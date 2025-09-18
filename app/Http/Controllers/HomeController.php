@@ -8,6 +8,10 @@ class HomeController extends Controller
 {
     public function index ()
     {
-        return "This is Home page";
+        return view ('index');
+    }
+    public function contact ()
+    {
+        return view ('contact');
     }
 }
