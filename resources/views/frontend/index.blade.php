@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>E-commerce Website</title>
-
-    @include('frontend.includes.style')
-
-</head>
-<body>
-@include('frontend.includes.header')
-	<main>
+@extends('frontend.master')
+@section('content')
 		<!-- /Home Slider -->
 		<section class="home-slider-section">
 			<div class="container">
@@ -206,7 +195,7 @@
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
 							<a href="details.html" class="product__item-image-inner">
-								<img src="{{asset('frontend/assets/images/product1.jpg')}}" alt="Product Image" />
+								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
 								<a href="details.html" class="product__item-add-cart-btn-inner">
@@ -342,7 +331,7 @@
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
 							<a href="details.html" class="product__item-image-inner">
-								<img src="./assets/images/product.png" alt="Product Image" />
+								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
 								<a href="details.html" class="product__item-add-cart-btn-inner">
@@ -418,7 +407,7 @@
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
 							<a href="details.html" class="product__item-image-inner">
-								<img src="./assets/images/product1.jpg" alt="Product Image" />
+								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
 								<a href="details.html" class="product__item-add-cart-btn-inner">
@@ -509,12 +498,4 @@
 			</div>
 		</section>
 		<!-- /Popular Product -->
-	</main>
-
-   @include('frontend.includes.footer')
-
-
-@include('frontend.includes.script')
-	
-</body>
-</html>
+@endsection

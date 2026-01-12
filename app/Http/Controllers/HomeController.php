@@ -10,4 +10,12 @@ class HomeController extends Controller
     {
         return view ('frontend.index');
     }
+    public function shop ()
+    {
+        return view ('frontend.shop');
+    }
+    public function returnProcess () 
+    {
+        return view ('frontend.return-process');
+    }
 }
