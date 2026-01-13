@@ -50,8 +50,8 @@
 									</h4>
 								</div>
 								<div class="shopping-cart-button">
-									<a href="view-products.html" class="view-cart-link">View cart</a>
-									<a href="checkout.html" class="checkout-link">Checkout</a>
+									<a href="{{url('/view-cart')}}" class="view-cart-link">View cart</a>
+									<a href="{{url('/checkout')}}" class="checkout-link">Checkout</a>
 								</div>
 							</div>
 						</div>
@@ -71,13 +71,13 @@
 							<div class="header__category-items-outer">
 								<ul class="header__category-list">
 									<li class="header__category-list-item item-has-submenu">
-										<a href="category-product.html" class="header__category-list-item-link">
+										<a href="{{url('/category-products')}}" class="header__category-list-item-link">
 											<img src="{{asset('frontend/assets/images/product.png')}}" alt="category">
 											Test Category
 										</a>
 										<ul class="header__nav-item-category-submenu">
 											<li class="header__category-submenu-item">
-												<a href="sub-category-product.html" class="header__category-submenu-item-link">
+												<a href="{{url('/sub-category-products')}}" class="header__category-submenu-item-link">
 													Test Subcategory
 												</a>
 											</li>
