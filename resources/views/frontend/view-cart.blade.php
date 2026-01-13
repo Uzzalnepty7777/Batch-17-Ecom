@@ -43,7 +43,7 @@
                     </table>
                 </div>
                 <div class="text-center">
-                    <a href="checkout.html" class="process-checkout-btn">
+                    <a href="{{url('/checkout')}}" class="process-checkout-btn">
                         Proceed To CheckOut
                         <i class="fas fa-sign-out-alt"></i>
                     </a>

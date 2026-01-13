@@ -4,7 +4,7 @@
             <div class="privacy-policy-heading-wrapper">
                 <div class="section-heading-outer">
                     <h4 class="section-heading-inner">
-                        Return Process
+                        About Us
                     </h4>
                 </div>
             </div>

@@ -40,7 +40,7 @@
 					</h1>
 				</div>
 				<div class="categoris-items-wrapper owl-carousel">
-					<a href="#" class="categoris-item">
+					<a href="{{url('/category-products')}}" class="categoris-item">
 						<img src="{{asset('frontend/assets/images/product.png')}}" alt="category" />
 						<h6 class="categoris-name">
 							Test Category
@@ -81,18 +81,48 @@
 					<h1 class="title">
 						Hot Products
 					</h1>
-					<a href="type-products.html" class="product-view-all-btn">
+					<a href="{{url('/view-type-products')}}" class="product-view-all-btn">
 						View All
 					</a>
 				</div>
 				<div class="product-items-wrapper">
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
+									Add to Cart
+								</a>
+							</div>
+							<div class="product__type-badge-outer">
+								<span class="product__type-badge-inner">
+									Hot
+								</span>
+							</div>
+						</div>
+						<div class="product__item-info-outer">
+							<a href="{{url('/product-details')}}" class="product__item-name">
+								Test Product
+							</a>
+							<div class="product__item-price-outer">
+								<div class="product__item-discount-price">
+									<del>400 Tk.</del>
+								</div>
+								<div class="product__item-regular-price">
+									<span>300 Tk.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="product__item-outer">
+						<div class="product__item-image-outer">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
+								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
+							</a>
+							<div class="product__item-add-cart-btn-outer">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -118,11 +148,11 @@
 					</div>
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -133,37 +163,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
-								Test Product
-							</a>
-							<div class="product__item-price-outer">
-								<div class="product__item-discount-price">
-									<del>400 Tk.</del>
-								</div>
-								<div class="product__item-regular-price">
-									<span>300 Tk.</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="product__item-outer">
-						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
-								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
-							</a>
-							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
-									Add to Cart
-								</a>
-							</div>
-							<div class="product__type-badge-outer">
-								<span class="product__type-badge-inner">
-									Hot
-								</span>
-							</div>
-						</div>
-						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -187,18 +187,18 @@
 					<h1 class="title">
 						New Arrival
 					</h1>
-					<a href="type-products.html" class="product-view-all-btn">
+					<a href="{{url('/view-type-products')}}" class="product-view-all-btn">
 						View All
 					</a>
 				</div>
 				<div class="product-items-wrapper">
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -209,7 +209,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -224,11 +224,11 @@
 					</div>
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -239,7 +239,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -254,11 +254,11 @@
 					</div>
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -269,7 +269,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -293,18 +293,18 @@
 					<h1 class="title">
 						Regular Products
 					</h1>
-					<a href="type-products.html" class="product-view-all-btn">
+					<a href="{{url('/view-type-products')}}" class="product-view-all-btn">
 						View All
 					</a>
 				</div>
 				<div class="product-items-wrapper">
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -315,7 +315,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -330,11 +330,11 @@
 					</div>
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -345,7 +345,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -360,11 +360,11 @@
 					</div>
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -375,7 +375,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -399,18 +399,18 @@
 					<h1 class="title">
 						Discount Products
 					</h1>
-					<a href="type-products.html" class="product-view-all-btn">
+					<a href="{{url('/view-type-products')}}" class="product-view-all-btn">
 						View All
 					</a>
 				</div>
 				<div class="product-items-wrapper">
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -421,7 +421,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -436,11 +436,11 @@
 					</div>
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -451,7 +451,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
@@ -466,11 +466,11 @@
 					</div>
 					<div class="product__item-outer">
 						<div class="product__item-image-outer">
-							<a href="details.html" class="product__item-image-inner">
+							<a href="{{url('/product-details')}}" class="product__item-image-inner">
 								<img src="{{asset('frontend/assets/images/product.png')}}" alt="Product Image" />
 							</a>
 							<div class="product__item-add-cart-btn-outer">
-								<a href="details.html" class="product__item-add-cart-btn-inner">
+								<a href="#" class="product__item-add-cart-btn-inner">
 									Add to Cart
 								</a>
 							</div>
@@ -481,7 +481,7 @@
 							</div>
 						</div>
 						<div class="product__item-info-outer">
-							<a href="#" class="product__item-name">
+							<a href="{{url('/product-details')}}" class="product__item-name">
 								Test Product
 							</a>
 							<div class="product__item-price-outer">
