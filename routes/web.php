@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/shop', [HomeController::class, 'shop']);
@@ -19,6 +21,11 @@ Route::get('/refund-policy', [HomeController::class, 'refundPolicy']);
 Route::get('/payment-policy', [HomeController::class, 'paymentPolicy']);
 Route::get('/about-us', [HomeController::class, 'aboutUs']);
 Route::get('/contact-us', [HomeController::class, 'contactUs']);
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Admin login
+Route::get('/admin/login',[AuthController::class, 'adminLoginForm']);
+
+Auth::routes(); 
+
+Route::get('/admin/dashboard',[AdminController::class, 'adminDashboard']);
+
