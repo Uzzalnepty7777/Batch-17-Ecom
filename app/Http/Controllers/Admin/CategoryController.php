@@ -26,9 +26,11 @@ class CategoryController extends Controller
             $category->image = $imagename;
             
         }
+        
         $category->save();
+
+        toastr()->success('Category added successfully!');
         return redirect()->back();
     }
-
-    
+   
 }
