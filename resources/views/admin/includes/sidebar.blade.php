@@ -36,7 +36,7 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="./index2.html" class="nav-link">
+                              <a href="{{url('/admin/create/category')}}" class="nav-link">
                                   <i class="nav-icon bi bi-circle"></i>
                                   <p>Add New</p>
                               </a>
@@ -44,7 +44,7 @@
                       </ul>
                   </li>
                   <li class="nav-item">
-                      <a href="./generate/theme.html" class="nav-link">
+                      <a href="#" class="nav-link">
                           <i class="nav-icon bi bi-palette"></i>
                           <p>Logout</p>
                       </a>
