@@ -29,6 +29,10 @@ Route::get('/admin/login',[AuthController::class, 'adminLoginForm']);
 Auth::routes(); 
 
 Route::get('/admin/dashboard',[AdminController::class, 'adminDashboard']);
+
+// Category Routes
 Route::get('/admin/create/category',[CategoryController::class, 'createCategory']);
 Route::post('/admin/store/category',[CategoryController::class, 'storeCategory']);
+Route::get('/admin/list/category',[CategoryController::class, 'listCategory']);
+Route::get('/admin/delete/category/{id}',[CategoryController::class, 'deleteCategory']);
 
