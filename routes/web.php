@@ -35,4 +35,6 @@ Route::get('/admin/create/category',[CategoryController::class, 'createCategory'
 Route::post('/admin/store/category',[CategoryController::class, 'storeCategory']);
 Route::get('/admin/list/category',[CategoryController::class, 'listCategory']);
 Route::get('/admin/delete/category/{id}',[CategoryController::class, 'deleteCategory']);
+Route::get('/admin/edit/category/{id}',[CategoryController::class, 'editCategory']);
+Route::post('/admin/update/category/{id}',[CategoryController::class, 'updateCategory']);
 

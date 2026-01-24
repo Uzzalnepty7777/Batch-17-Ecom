@@ -48,5 +48,34 @@ class CategoryController extends Controller
         return redirect()->back();
         
     }
+
+    public function editCategory($id)
+    {
+        $category = Category::find($id);
+        return view ('admin.category.edit', compact('category'));
+    }
+    public function updateCategory(Request $request, $id)
+    {
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+
+        $category->slug = Str::slug($request->name);
+
+        if(isset($request->image)){
+
+              if($category->image && file_exists('admin/category/'.$category->image)){
+                unlink('admin/category/'.$category->image);
+
+
+              }
+               $imagename = rand().'-category.'.$request->image->extension();
+            $request->image->move('admin/category/', $imagename);
+
+            $category->image = $imagename;
+        }
+        $category->save();
+        return redirect()->back();
+    }     
    
 }
