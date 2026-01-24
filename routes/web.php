@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,7 @@ Auth::routes();
 
 Route::get('/admin/dashboard',[AdminController::class, 'adminDashboard']);
 
-// Category Routes
+// Category Routes...
 Route::get('/admin/create/category',[CategoryController::class, 'createCategory']);
 Route::post('/admin/store/category',[CategoryController::class, 'storeCategory']);
 Route::get('/admin/list/category',[CategoryController::class, 'listCategory']);
@@ -38,3 +39,7 @@ Route::get('/admin/delete/category/{id}',[CategoryController::class, 'deleteCate
 Route::get('/admin/edit/category/{id}',[CategoryController::class, 'editCategory']);
 Route::post('/admin/update/category/{id}',[CategoryController::class, 'updateCategory']);
 
+// Sub Category Routes...
+Route::get('/admin/create/sub-category',[SubCategoryController::class, 'createSubCategory']);
+Route::post('/admin/store/sub-category',[SubCategoryController::class, 'storeSubCategory']);
+Route::get('/admin/list/sub-category',[SubCategoryController::class, 'listSubCategory']);
