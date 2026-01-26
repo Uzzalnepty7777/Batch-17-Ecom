@@ -31,4 +31,18 @@ class SubCategoryController extends Controller
             $subCategories = SubCategory::get();
             return view ('admin.subcategory.list',compact('subCategories'));
         }
+        public function deleteSubCategory ($id)
+        {
+            $subCategory = SubCategory::find($id);
+            $subCategory->delete();
+            toastr()->success('Subcategory deleted successfully!');
+            return redirect()->back();
+
+        }
+        public function editSubCategory($id)
+        {
+            $categories = Category::orderBy('name','asc')->get();
+            $subCategory = SubCategory::find($id);
+            return view('admin.subcategory.edit', compact('subCategory', 'categories'));
+        }
 }
