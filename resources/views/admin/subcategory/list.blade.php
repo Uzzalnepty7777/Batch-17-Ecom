@@ -49,7 +49,7 @@
                                     <tr class="align-middle">
                                         <td>{{$loop->index+1}}</td>
                                         <td>{{ $subcategory->name }}</td>
-                                        <td>{{ $subcategory->cat_id}}</td>
+                                        <td>{{ $subcategory->category->name }}</td>
                                         <td>
                                         <a href="{{url('/admin/edit/sub-category/'.$subcategory->id)}}"><span class="badge text-bg-info">Edit</span></a>
                                         <a href="{{url('/admin/delete/sub-category/'.$subcategory->id)}}" onclick="return confirm('Are you sure?')"><span class="badge text-bg-danger">Delete</span></a>

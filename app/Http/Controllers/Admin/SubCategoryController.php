@@ -19,7 +19,7 @@ class SubCategoryController extends Controller
     {
         $subCategory = new SubCategory();
         $subCategory->cat_id = $request->cat_id;
-        $subCategory->name = $request->name;
+        $subCategory->name = $$subCategory->name;
         $subCategory->slug = Str::slug($request->name);
         $subCategory->save();
         toastr()->success('Subcategory added successfully!');
@@ -28,7 +28,7 @@ class SubCategoryController extends Controller
         }
         public function listSubCategory()
         {
-            $subCategories = SubCategory::get();
+            $subCategories = SubCategory::with('category')->get();
             return view ('admin.subcategory.list',compact('subCategories'));
         }
         public function deleteSubCategory ($id)
@@ -44,5 +44,17 @@ class SubCategoryController extends Controller
             $categories = Category::orderBy('name','asc')->get();
             $subCategory = SubCategory::find($id);
             return view('admin.subcategory.edit', compact('subCategory', 'categories'));
+        }
+        public function updateSubCategory (Request $request,$id)
+        {
+            $subCategory = SubCategory::find($id);
+
+            $subCategory->cat_id = $request->cat_id;
+            $subCategory->name = $request->name;
+            $subCategory->slug = Str::slug($request->name);
+            $subCategory->save();
+            toastr()->success('Subcategory updated successfully!');
+            return redirect('/admin/list/sub-category');
+
         }
 }
