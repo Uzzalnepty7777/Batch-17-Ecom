@@ -19,7 +19,7 @@ class SubCategoryController extends Controller
     {
         $subCategory = new SubCategory();
         $subCategory->cat_id = $request->cat_id;
-        $subCategory->name = $$subCategory->name;
+        $subCategory->name = $request->name;
         $subCategory->slug = Str::slug($request->name);
         $subCategory->save();
         toastr()->success('Subcategory added successfully!');
