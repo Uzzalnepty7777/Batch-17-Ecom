@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Color;
+use App\Models\GalleryImage;
 use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -43,6 +45,37 @@ class ProductController extends Controller
         }
 
         $product->save();
+
+            // Gallery Image Upload
+
+        if(isset($request->gallery_image)){
+
+            foreach($request->gallery_image as $galleryimage){
+
+                $galleryimageObject = new GalleryImage();
+
+                $galleryimagename = rand().'-galleryimage.'.$galleryimage->extension();
+            $galleryimage->move('admin/galleryimage/', $galleryimagename);
+            $galleryimageObject->gallery_image = $galleryimagename;
+            $galleryimageObject->product_id = $product->id;
+            $galleryimageObject->save();
+
+            }
+        }
+        // Size and Color Upload
+        if(isset($request->color)){
+            foreach($request->color as $color_name){
+                $color = new Color();
+
+                $color->name = $color_name;
+                $color->slug = Str::slug($color_name);
+                $color->product_id = $product->id;
+
+                $color->save();
+
+            }
+        }
+
         toastr()->success('Product added successfully!');
         return redirect()->back();
 

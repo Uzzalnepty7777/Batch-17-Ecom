@@ -38,6 +38,20 @@
                                 @endforeach
                             </select>
                         </div>
+                         <div class="mb-3 col-md-6">
+                            <div class="form-group" id="color_fields">
+                                 <label for="color" class="form-label">Color (Optional)</label>
+                                 <input type="text" class="form-control mb-2" id="color" placeholder="Enter Color" name="color[]" multiple/>
+                            </div>
+                            <button type="button" class="btn btn-success float-end" id="add_color">Add Color</button>
+                        </div>
+                          <div class="mb-3 col-md-6">
+                            <div class="form-group" id="size_fields">
+                                 <label for="size" class="form-label">Size (Optional)</label>
+                                 <input type="text" class="form-control mb-2" id="size" placeholder="Enter Size" name="size[]" multiple/>
+                            </div>
+                            <button type="button" class="btn btn-success float-end" id="add_size">Add Size</button>
+                        </div>
                         <div class="mb-3 col-md-6">
                             <label for="buying_price" class="form-label">Buying Price (*)</label>
                             <input type="number" class="form-control" id="buying_price" placeholder="Enter Buying Price*"
@@ -72,9 +86,12 @@
                 </div>
 
                 <div class="input-group mb-3 col-md-6">
-                    <input type="file" accept="image/*" class="form-control" id="inputGroupFile02" name="image"
-                        required />
-                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                    <input type="file" accept="image/*" class="form-control" id="image" name="image" required />
+                    <label class="input-group-text" for="image">Upload Main Image(*)</label>
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                    <input type="file" accept="image/*" class="form-control" id="gallery_image" name="gallery_image[]" multiple  required />
+                    <label class="input-group-text" for="gallery_image">Upload Gallery Images(*)</label>
                 </div>
                 <div class="mb-3 col-md-12">
                     <label for="summernote" class="form-label">Product Description</label>
@@ -104,5 +121,22 @@
         $(document).ready(function() {
             $('#summernote2').summernote();
         });
+    </script>
+    {{-- Add More Color..... --}}
+    <script>
+       $(document).ready(function(){
+        $("#add_color").click(function(){
+            $("#color_fields").append('<input type="text" class="form-control mb-2" id="color" placeholder="Enter Color" name="color[]" multiple/>');
+        })
+       })
+    </script>
+
+     {{-- Add More Size..... --}}
+    <script>
+       $(document).ready(function(){
+        $("#add_size").click(function(){
+            $("#size_fields").append('<input type="text" class="form-control mb-2" id="size" placeholder="Enter Size" name="size[]" multiple/>');
+        })
+       })
     </script>
 @endpush
