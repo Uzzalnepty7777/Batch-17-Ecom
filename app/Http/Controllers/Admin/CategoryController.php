@@ -34,7 +34,7 @@ class CategoryController extends Controller
     }
     public function listCategory()
     {
-        $categories = Category::get();
+        $categories = Category::paginate(10);
         return view ('admin.category.list', compact('categories'));
     }
     public function deleteCategory($id)
