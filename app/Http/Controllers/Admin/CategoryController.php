@@ -27,10 +27,8 @@ class CategoryController extends Controller
             
         }
         
-        $category->save();
-
-        toastr()->success('Category added successfully!');
-        return redirect()->back();
+        $category->save();        
+        return redirect()->back()->with('success', 'Category added successfully!');
     }
     public function listCategory()
     {
@@ -44,8 +42,7 @@ class CategoryController extends Controller
             unlink('admin/category/'.$category->image);
         }
         $category->delete();
-        toastr()->success('Category deleted successfully!');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Category deleted successfully!');
         
     }
 
@@ -75,7 +72,7 @@ class CategoryController extends Controller
             $category->image = $imagename;
         }
         $category->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Category updated successfully!');
     }     
    
 }

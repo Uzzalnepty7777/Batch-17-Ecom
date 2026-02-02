@@ -75,7 +75,7 @@ class ProductController extends Controller
                 $color->save();
             }
         }
-          // Size Upload
+        // Size Upload
         if (isset($request->size)  && $request->size[0] != null) {
             foreach ($request->size as $size_name) {
                 if ($size_name != null)
@@ -88,13 +88,118 @@ class ProductController extends Controller
                 $size->save();
             }
         }
-
-        toastr()->success('Product added successfully!');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Product updated successfully!');
     }
     public function listProduct()
     {
-        $products = Product::with('category','subcategory')->paginate(50);
+        $products = Product::with('category', 'subcategory')->paginate(50);
         return view('admin.product.list', compact('products'));
     }
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+
+        $product = Product::find($id);
+        if ($product->image && file_exists('admin/product/' . $product->image)) {
+            unlink('admin/product/' . $product->image);
+        }
+        //  Delete Gallery Images...
+        $galleryImages = GalleryImage::where('product_id', $product->id)->get();
+        foreach ($galleryImages as $galleryImage) {
+
+            if ($galleryImage->gallery_image && file_exists('admin/galleryimage/' . $galleryImage->gallery_image)) {
+                unlink('admin/galleryimage/' . $galleryImage->gallery_image);
+            }
+            $galleryImage->delete();
+        }
+        //  Delete Colors...
+        $colors = Color::where('product_id', $product->id)->get();
+        foreach ($colors as $color) {
+            $color->delete();
+        }
+        // Delete Sizes...
+        $sizes = Size::where('product_id', $product->id)->get();
+        foreach ($sizes as $size) {
+            $size->delete();
+        }
+        $product->delete();
+        return redirect()->back()->with('success', 'Product deleted successfully!');
+    }
+    public function editProduct($id)
+    {
+        $categories = Category::orderBy('name', 'asc')->get();
+        $subcategories = SubCategory::orderBy('name', 'asc')->get();
+        $product = Product::find($id);
+        $colors = Color::where('product_id', $product->id)->get();
+        $sizes = Size::where('product_id', $product->id)->get();
+        $galleryImages = GalleryImage::where('product_id', $product->id)->get();
+        return view('admin.product.edit', compact('categories', 'subcategories', 'product', 'colors', 'sizes', 'galleryImages'));
+    }
+    public function updateProduct(Request $request, $id)
+    {
+        $product = Product::find($id);
+
+        $product->name = $request->name;
+        $product->slug = Str::slug($request->name);
+        $product->cat_id = $request->cat_id;
+        $product->sku_code = $request->sku_code;
+        $product->sub_cat_id = $request->sub_cat_id;
+        $product->buying_price = $request->buying_price;
+        $product->regular_price = $request->regular_price;
+        $product->discount_price = $request->discount_price;
+        $product->qty = $request->qty;
+        $product->product_type = $request->product_type;
+        $product->description = $request->description;
+        $product->product_policy = $request->product_policy;
+
+        if (isset($request->image)) {
+            $product = Product::find($id);
+            if ($product->image && file_exists('admin/product/' . $product->image)) {
+                unlink('admin/product/' . $product->image);
+            }
+            $imagename = rand() . '-mainimage.' . $request->image->extension();
+            $request->image->move('admin/product/', $imagename);
+            $product->image = $imagename;
+        }
+        $product->save();
+
+        // Update colors....
+        if (isset($request->color)  && ($request->color[0] != null || $request->color[1] != null)) {
+            // First delete existing colors
+            Color::where('product_id', $product->id)->delete();
+
+            // Then add new colors
+            foreach ($request->color as $color_name) {
+                if ($color_name != null) {
+                    $color = new Color();
+                    $color->name = $color_name;
+                    $color->slug = Str::slug($color_name);
+                    $color->product_id = $product->id;
+                    $color->save();
+                }
+            }
+        }
+        return redirect()->back()->with('success', 'Product updated successfully!');
+    }
+
+    // Color, Size, Gallery Image Delete.....
+    public function deleteColor($id)
+    {
+        $color = Color::find($id);
+        $color->delete();
+        return redirect()->back();
+    }
+    if (isset($request->color)  && ($request->color[0] != null || $request->color[1] != null)) {
+            // First delete existing colors
+            Color::where('product_id', $product->id)->delete();
+            // Then add new colors
+            foreach ($request->color as $color_name) {
+                if ($color_name != null) {
+                    $color = new Color();
+                    $color->name = $color_name;
+                    $color->slug = Str::slug($color_name);
+                    $color->product_id = $product->id;
+                    $color->save();
+
+    
 }

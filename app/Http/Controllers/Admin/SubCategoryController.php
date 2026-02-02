@@ -22,8 +22,7 @@ class SubCategoryController extends Controller
         $subCategory->name = $request->name;
         $subCategory->slug = Str::slug($request->name);
         $subCategory->save();
-        toastr()->success('Subcategory added successfully!');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Subcategory added successfully!');
         
         }
         public function listSubCategory()
@@ -35,8 +34,7 @@ class SubCategoryController extends Controller
         {
             $subCategory = SubCategory::find($id);
             $subCategory->delete();
-            toastr()->success('Subcategory deleted successfully!');
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Subcategory deleted successfully!');
 
         }
         public function editSubCategory($id)
