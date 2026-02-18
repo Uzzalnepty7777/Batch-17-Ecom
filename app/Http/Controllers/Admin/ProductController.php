@@ -179,19 +179,13 @@ class ProductController extends Controller
                 }
             }
         }
-        return redirect()->back()->with('success', 'Product updated successfully!');
-    }
 
-    // Color, Size, Gallery Image Delete.....
-    public function deleteColor($id)
-    {
-        $color = Color::find($id);
-        $color->delete();
-        return redirect()->back();
-    }
-    if (isset($request->color)  && ($request->color[0] != null || $request->color[1] != null)) {
+
+        // Update colors....
+        if (isset($request->color)  && ($request->color[0] != null || $request->color[1] != null)) {
             // First delete existing colors
             Color::where('product_id', $product->id)->delete();
+
             // Then add new colors
             foreach ($request->color as $color_name) {
                 if ($color_name != null) {
@@ -200,6 +194,40 @@ class ProductController extends Controller
                     $color->slug = Str::slug($color_name);
                     $color->product_id = $product->id;
                     $color->save();
+                }
+            }
+        }
 
-    
+         // Update sizes....
+         if (isset($request->size)  && ($request->size[0] != null || $request->size[1] != null)) {
+            // First delete existing sizes
+            Size::where('product_id', $product->id)->delete();
+
+            // Then add new sizes
+            foreach ($request->size as $size_name) {
+                if ($size_name != null) {
+                    $size = new Size();
+                    $size->name = $size_name;
+                    $size->slug = Str::slug($size_name);
+                    $size->product_id = $product->id;
+                    $size->save();
+                }
+            }
+        }
+        return redirect()->back()->with('success', 'Product updated successfully!');
+    } 
+
+    // Color, Size, Gallery Image Delete.....
+    public function deleteColor($id)
+    {
+        $color = Color::find($id);
+        $color->delete();
+        return redirect()->back();
+    }
+    public function deleteSize($id)
+    {
+        $size = Size::find($id);
+        $size->delete();
+        return redirect()->back();
+    }
 }

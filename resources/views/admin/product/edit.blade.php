@@ -54,9 +54,10 @@
                         <div class="mb-3 col-md-6">
                             <div class="form-group" id="size_fields">
                                 <label for="size" class="form-label">Size (Optional)</label>
-                                <input type="text" class="form-control mb-2" id="size" placeholder="Enter Size"name="size[]" multiple />
+                                <input type="text" class="form-control " id="size" placeholder="Enter Size"name="size[]" multiple />
                                 @foreach ($sizes as $size)
                                     <input type="text" class="form-control mb-2" id="size" value="{{ $size->name }}" placeholder="Enter Size"name="size[]" multiple />
+                                    <a href="{{url('admin/delete/size/'.$size->id) }}" class="btn btn-danger btn-sm mb-2">Delete</a>
                                     @endforeach
                             </div>
                             <button type="button" class="btn btn-success float-end" id="add_size">Add Size</button>
