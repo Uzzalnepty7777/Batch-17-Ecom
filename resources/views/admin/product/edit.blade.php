@@ -107,7 +107,7 @@
                 <img src="{{ asset('admin/product/' . $product->image) }}" width="100" height="100">
                 <div class="input-group mb-3 col-md-6 mt-3" >
                     <input type="file" accept="image/*" class="form-control" id="gallery_image"
-                        name="gallery_image[]" />
+                    name="gallery_image[]" multiple />
                     <label class="input-group-text" for="gallery_image">Upload Gallery Images(*)</label>
                 </div>
                 @foreach ($galleryImages as $galleryImage)

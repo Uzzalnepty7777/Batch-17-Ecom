@@ -260,14 +260,43 @@ class ProductController extends Controller
 
                 $size->save();
             }
+        }   // Gallery Image Update....
+if ($request->hasFile('gallery_images')) {
+
+    // Delete old gallery images
+    $oldGalleryImages = GalleryImage::where('product_id', $product->id)->get();
+
+    foreach ($oldGalleryImages as $oldImage) {
+
+        if ($oldImage->gallery_image && file_exists('admin/galleryimage/' . $oldImage->gallery_image)) {
+
+            unlink('admin/galleryimage/' . $oldImage->gallery_image);
         }
 
-        return redirect()->back()->with('success', 'Product updated successfully!');
+        $oldImage->delete();
     }
 
-    // Gallery Image Update.....
-    
+    // Upload new gallery images
+    foreach ($request->gallery_images as $galleryImage) {
 
+        $galleryImageObj = new GalleryImage();
+
+        $galleryImageName = time() . rand() . '-galleryimage.' . $galleryImage->extension();
+
+        $galleryImage->move('admin/galleryimage/', $galleryImageName);
+
+        $galleryImageObj->gallery_image = $galleryImageName;
+        $galleryImageObj->product_id = $product->id;
+
+        $galleryImageObj->save();
+        
+    } 
+    
+    }
+     return redirect()->to(url()->previous())->with('success', 'Product updated successfully!');
+ 
+}
+    
 
     // Color, Size, Gallery Image Delete.....
 
