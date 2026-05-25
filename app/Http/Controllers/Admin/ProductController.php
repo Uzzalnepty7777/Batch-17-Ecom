@@ -260,46 +260,50 @@ class ProductController extends Controller
 
                 $size->save();
             }
-        }   // Gallery Image Update....
-if ($request->hasFile('gallery_images')) {
-
-    // Delete old gallery images
-    $oldGalleryImages = GalleryImage::where('product_id', $product->id)->get();
-
-    foreach ($oldGalleryImages as $oldImage) {
-
-        if ($oldImage->gallery_image && file_exists('admin/galleryimage/' . $oldImage->gallery_image)) {
-
-            unlink('admin/galleryimage/' . $oldImage->gallery_image);
         }
 
-        $oldImage->delete();
+        // Gallery Images Update....
+        if ($request->hasFile('gallery_images')) {
+
+            // Delete old gallery images
+            $oldGalleryImages = GalleryImage::where('product_id', $product->id)->get();
+
+            foreach ($oldGalleryImages as $oldImage) {
+
+                if (
+                    $oldImage->gallery_image &&
+                    file_exists(public_path('admin/galleryimage/' . $oldImage->gallery_image))
+                ) {
+
+                    unlink(public_path('admin/galleryimage/' . $oldImage->gallery_image));
+                }
+
+                $oldImage->delete();
+            }
+
+            // Upload new gallery images
+            foreach ($request->file('gallery_images') as $galleryImage) {
+
+                $galleryImageObj = new GalleryImage();
+
+                $galleryImageName = time() . rand() . '-galleryimage.' . $galleryImage->extension();
+
+                $galleryImage->move(
+                    public_path('admin/galleryimage/'),
+                    $galleryImageName
+                );
+
+                $galleryImageObj->gallery_image = $galleryImageName;
+                $galleryImageObj->product_id = $product->id;
+
+                $galleryImageObj->save();
+            }
+        }
+
+        return redirect()->back()->with('success', 'Product updated successfully!');
     }
 
-    // Upload new gallery images
-    foreach ($request->gallery_images as $galleryImage) {
-
-        $galleryImageObj = new GalleryImage();
-
-        $galleryImageName = time() . rand() . '-galleryimage.' . $galleryImage->extension();
-
-        $galleryImage->move('admin/galleryimage/', $galleryImageName);
-
-        $galleryImageObj->gallery_image = $galleryImageName;
-        $galleryImageObj->product_id = $product->id;
-
-        $galleryImageObj->save();
-        
-    } 
-    
-    }
-     return redirect()->to(url()->previous())->with('success', 'Product updated successfully!');
- 
-}
-    
-
-    // Color, Size, Gallery Image Delete.....
-
+    // Color Delete.....
     public function deleteColor($id)
     {
         $color = Color::findOrFail($id);
@@ -309,6 +313,7 @@ if ($request->hasFile('gallery_images')) {
         return redirect()->back();
     }
 
+    // Size Delete.....
     public function deleteSize($id)
     {
         $size = Size::findOrFail($id);
