@@ -110,9 +110,14 @@
                     name="gallery_images[]" multiple />
                     <label class="input-group-text" for="gallery_image">Upload Gallery Images(*)</label>
                 </div>
-                @foreach ($galleryImages as $galleryImage)
-                    <img src="{{ asset('admin/galleryimage/'. $galleryImage->gallery_image) }}" width="100" height="100">
-                @endforeach
+                <div class="row">              
+                    @foreach ($galleryImages as $galleryImage)
+                        <div class="col-3">
+                            <img src="{{asset('admin/galleryimage/'.$galleryImage->gallery_image) }}" width="100" height="100">
+                            <a href="{{url('admin/delete/galleryimage/'.$galleryImage->id) }}"class="btn btn-danger">Delete</a>
+                        </div>
+                    @endforeach
+                </div>
                 <div class="mb-3 col-md-12 mt-3">
                     <label for="summernote" class="form-label">Product Description</label>
                     <textarea class="form-control" id="summernote" placeholder="Enter Product Description*" name="description">{{ $product->description }}</textarea>
