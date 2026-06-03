@@ -322,4 +322,23 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
+
+    // Gallery Image Delete.....
+    public function deleteGalleryImage($id)
+    {
+        $galleryImage = GalleryImage::find($id);
+        if ($galleryImage) {
+
+            if (
+                $galleryImage->gallery_image &&
+                file_exists(public_path('admin/galleryimage/' . $galleryImage->gallery_image))
+            ) {
+
+                unlink(public_path('admin/galleryimage/' . $galleryImage->gallery_image));
+            }
+
+            $galleryImage->delete();
+            return redirect()->back()->with('success', 'Gallery image deleted successfully!');
+        }
+    }
 }

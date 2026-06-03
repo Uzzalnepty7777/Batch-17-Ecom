@@ -112,9 +112,11 @@
                 </div>
                 <div class="row">              
                     @foreach ($galleryImages as $galleryImage)
-                        <div class="col-3">
+                        <div class="col-3 mb-3">
                             <img src="{{asset('admin/galleryimage/'.$galleryImage->gallery_image) }}" width="100" height="100">
-                            <a href="{{url('admin/delete/galleryimage/'.$galleryImage->id) }}"class="btn btn-danger">Delete</a>
+                            <a href="{{ url('admin/delete/gallery-image/'.$galleryImage->id) }}">
+                                <button type="button" class="btn btn-danger btn-sm mt-2">Delete</button>
+                            </a>
                         </div>
                     @endforeach
                 </div>
