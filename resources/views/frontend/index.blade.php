@@ -41,12 +41,12 @@
 				</div>
 				<div class="categoris-items-wrapper owl-carousel">
 					@foreach ($categories as $category)
-					<a href="{{url('/category-products')}}" class="categoris-item">
-						<img src="{{asset('admin/product/'.$category->image)}}" alt="category" />
+					<a href="{{url('category-products/'.$category->id)}}" class="categoris-item">
+						<img src="{{asset('admin/category/'.$category->image)}}" alt="category" />
 						<h6 class="categoris-name">
 							{{$category->name}}
 						</h6>
-						<span class="items-number">1 items</span>
+						<span class="items-number">{{App\Models\Product::where('cat_id',$category->id)->count()}} Items</span>
 					</a>
 					@endforeach
 				</div>
