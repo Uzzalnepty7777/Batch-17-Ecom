@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index ()
     {
-        return view ('frontend.index');
+       $categories = Category::get();
+        return view('frontend.index', compact('categories'));
     }
     public function shop ()
     {
