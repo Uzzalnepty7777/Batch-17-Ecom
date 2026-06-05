@@ -10,8 +10,12 @@ class HomeController extends Controller
 {
     public function index ()
     {
-       $categories = Category::get();
-        return view('frontend.index', compact('categories'));
+        $categories = Category::get();
+        $hotProducts = Product::where('product_type','hot')->get();
+        $newProducts = Product::where('product_type','new')->get();
+        $regularProducts = Product::where('product_type','regular')->get();
+        $discountProducts = Product::where('product_type','discount')->get();
+        return view('frontend.index', compact('categories', 'hotProducts', 'newProducts', 'regularProducts', 'discountProducts'));
     }
     public function shop ()
     {
@@ -29,10 +33,12 @@ class HomeController extends Controller
     {
         return view ('frontend.checkout');
     }
-    public function categoryProducts ($id)
+    public function categoryProducts ($slug)
     {
-        $products = Product::where('cat_id',$id)->get();
-        return view ('frontend.category-products', compact('products'));
+        $category = Category::where('slug', $slug)->first();
+        $products = Product::where('cat_id', $category->id)->get();
+        $productCount = $products->count();
+        return view ('frontend.category-products', compact('products', 'productCount','category'));
     }
     public function subCategoryProducts ()
     {

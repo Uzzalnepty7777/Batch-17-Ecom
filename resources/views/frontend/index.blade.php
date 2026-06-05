@@ -41,7 +41,7 @@
 				</div>
 				<div class="categoris-items-wrapper owl-carousel">
 					@foreach ($categories as $category)
-					<a href="{{url('category-products/'.$category->id)}}" class="categoris-item">
+					<a href="{{url('category-products/'.$category->slug)}}" class="categoris-item">
 						<img src="{{asset('admin/category/'.$category->image)}}" alt="category" />
 						<h6 class="categoris-name">
 							{{$category->name}}
