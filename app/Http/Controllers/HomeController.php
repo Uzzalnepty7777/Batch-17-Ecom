@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -28,9 +29,10 @@ class HomeController extends Controller
     {
         return view ('frontend.checkout');
     }
-    public function categoryProducts ()
+    public function categoryProducts ($id)
     {
-        return view ('frontend.category-products');
+        $products = Product::where('cat_id',$id)->get();
+        return view ('frontend.category-products', compact('products'));
     }
     public function subCategoryProducts ()
     {
