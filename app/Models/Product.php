@@ -18,5 +18,19 @@ class Product extends Model
     {
         return $this->belongsTo(SubCategory::class, 'sub_cat_id', 'id');
     }
+
+    public function color()
+    {
+        return $this->hasMany(Color::class, 'product_id', 'id');
+    }
     
+    public function size()
+    {
+        return $this->hasMany(Size::class, 'product_id', 'id');
+    }
+
+    public function galleryImage()
+    {
+        return $this->hasMany(GalleryImage::class, 'product_id', 'id');
+    }
 }

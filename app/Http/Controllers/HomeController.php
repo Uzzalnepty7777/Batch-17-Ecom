@@ -46,7 +46,7 @@ class HomeController extends Controller
     }
     public function productDetails ($slug)
     {
-        $product = Product::where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->with('color', 'size', 'galleryImage')->first();
         return view ('frontend.product-details', compact('product'));
     }
     public function viewTypeProducts ()
