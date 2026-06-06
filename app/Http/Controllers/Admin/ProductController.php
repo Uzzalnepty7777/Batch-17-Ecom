@@ -47,9 +47,10 @@ class ProductController extends Controller
             $request->image->move('admin/product/', $imagename);
 
             $product->image = $imagename;
+            $product->save();
         }
 
-        $product->save();
+
 
         // Gallery Image Upload...
         if (isset($request->gallery_image)) {

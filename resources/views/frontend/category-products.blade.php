@@ -24,7 +24,7 @@
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="product__item-outer">
                                     <div class="product__item-image-outer">
-                                        <a href="#" class="product__item-image-inner">
+                                        <a href="{{url('product-details/'.$product->slug)}}" class="product__item-image-inner">
                                             <img src="{{asset('admin/product/'.$product->image)}}"
                                                 alt="Product Image" />
                                         </a>
@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                     <div class="product__item-info-outer">
-                                        <a href="#" class="product__item-name">
+                                        <a href="{{url('product-details/'.$product->slug)}}" class="product__item-name">
                                             {{ $product->name }}
                                         </a>
                                         <div class="product__item-price-outer">

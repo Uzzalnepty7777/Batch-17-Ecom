@@ -44,9 +44,10 @@ class HomeController extends Controller
     {
         return view ('frontend.sub-category-products');
     }
-    public function productDetails ()
+    public function productDetails ($slug)
     {
-        return view ('frontend.product-details');
+        $product = Product::where('slug', $slug)->first();
+        return view ('frontend.product-details', compact('product'));
     }
     public function viewTypeProducts ()
     {
