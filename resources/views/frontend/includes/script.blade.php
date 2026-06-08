@@ -14,3 +14,26 @@
 <script type="text/javascript">
 	new WOW().init();
 </script>
+<script>
+$(document).ready(function(){
+
+    $('.increment-btn').click(function(e){
+        e.preventDefault();
+
+        var qty = parseInt($('#qty').val());
+
+        $('#qty').val(qty + 1);
+    });
+
+    $('.decrement-btn').click(function(e){
+        e.preventDefault();
+
+        var qty = parseInt($('#qty').val());
+
+        if(qty > 1){
+            $('#qty').val(qty - 1);
+        }
+    });
+
+});
+</script>

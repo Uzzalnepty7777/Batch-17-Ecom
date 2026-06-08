@@ -63,7 +63,7 @@
                                                     <a title="Decrement" class="decrement-btn" style="margin-top: -10px;">
                                                         <i class="fas fa-minus"></i>
                                                     </a>
-                                                    <input type="number" readonly name="qty" placeholder="Qty" value="1" min="1" id="qty" style="height: 35px">
+                                                    <input type="icon" readonly name="qty" placeholder="Qty" value="1" min="1" id="qty" style="height: 35px">
                                                     <a title="Increment" class="increment-btn" style="margin-top: -10px;">
                                                         <i class="fas fa-plus"></i>
                                                     </a>

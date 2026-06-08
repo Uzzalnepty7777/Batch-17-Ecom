@@ -6,6 +6,7 @@
 	<title>E-commerce Website</title>
 
     @include('frontend.includes.style')
+	@include('admin.includes.style')
 
 </head>
 <body>
