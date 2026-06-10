@@ -65,16 +65,12 @@
                                             @endforeach
                                         </div>
                                         <div class="purchase-info-outer">
-                                            <a title="Decrement" class="decrement-btn" style="margin-top: -10px;">
-                                                -
-                                            </a>
+                                            <button type="button" class="decrement-btn">-</button>
 
                                             <input type="number" readonly name="qty" value="1" min="1"
                                                 id="qty" style="height: 30px">
 
-                                            <a title="Increment" class="increment-btn" style="margin-top: -10px;">
-                                                +
-                                            </a>
+                                            <button type="button" class="increment-btn">+</button>
                                             <div>
                                                 <button type="submit" name="action" value="addToCart" id="addToCart"
                                                     class="cart-btn-inner">
@@ -178,11 +174,3 @@
         </div>
     </section>
 @endsection
-
-@push('script')
-    <script>
-    let qtyInput = document.getElementById('qty').value;
-    let incrementBtn = document.querySelector('.increment-btn');
-    let decrementBtn = document.querySelector('.decrement-btn');
-    </script>
-@endpush
