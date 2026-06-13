@@ -40,30 +40,39 @@
                                     </div>
                                     <form action="{{ url('/product-details/addtocart') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="product_id" id="" value="{{ $product->id }}">
-                                        <input type="hidden" name="price" id=""
+
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" name="price"
                                             value="{{ $product->discount_price ?? $product->regular_price }}">
+
+                                        {{-- Color --}}
                                         <div class="product-details-select-items-wrap">
                                             @foreach ($product->color as $scolor)
                                                 <div class="product-details-select-item-outer">
-                                                    <input type="radio" name="color" id="color"
+                                                    <input type="radio" name="color" id="color{{ $scolor->id }}"
                                                         value="{{ $scolor->name }}" class="category-item-radio">
-                                                    <label for="color" class="category-item-label">
+
+                                                    <label for="color{{ $scolor->id }}" class="category-item-label">
                                                         {{ $scolor->name }}
                                                     </label>
                                                 </div>
                                             @endforeach
                                         </div>
+
+                                        {{-- Size --}}
                                         <div class="product-details-select-items-wrap">
                                             @foreach ($product->size as $singleSize)
                                                 <div class="product-details-select-item-outer">
-                                                    <input type="radio" name="size" value="{{ $singleSize->name }}"
-                                                        class="category-item-radio">
-                                                    <label for="size"
-                                                        class="category-item-label">{{ $singleSize->name }}</label>
+                                                    <input type="radio" name="size" id="size{{ $singleSize->id }}"
+                                                        value="{{ $singleSize->name }}" class="category-item-radio">
+
+                                                    <label for="size{{ $singleSize->id }}" class="category-item-label">
+                                                        {{ $singleSize->name }}
+                                                    </label>
                                                 </div>
                                             @endforeach
                                         </div>
+
                                         <div class="purchase-info-outer">
                                             <button type="button" class="decrement-btn">-</button>
 
@@ -71,12 +80,14 @@
                                                 id="qty" style="height: 30px">
 
                                             <button type="button" class="increment-btn">+</button>
+
                                             <div>
                                                 <button type="submit" name="action" value="addToCart" id="addToCart"
                                                     class="cart-btn-inner">
                                                     <i class="fas fa-shopping-cart"></i>
                                                     Add to Cart
                                                 </button>
+
                                                 <button type="submit" name="action" value="buyNow" id="buyNow"
                                                     class="cart-btn-inner">
                                                     <i class="fas fa-truck"></i>
@@ -174,3 +185,25 @@
         </div>
     </section>
 @endsection
+<script>
+    $(document).ready(function () {
+
+        // PLUS button
+        $('.qty-plus').on('click', function () {
+            let input = $(this).closest('.qty-box').find('.qty-input');
+            let value = parseInt(input.val()) || 1;
+            input.val(value + 1);
+        });
+
+        // MINUS button
+        $('.qty-minus').on('click', function () {
+            let input = $(this).closest('.qty-box').find('.qty-input');
+            let value = parseInt(input.val()) || 1;
+
+            if (value > 1) {
+                input.val(value - 1);
+            }
+        });
+
+    });
+</script>

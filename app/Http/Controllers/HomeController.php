@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -78,6 +79,24 @@ class HomeController extends Controller
     {
         return view ('frontend.contact-us');
     }
+    //Cart Functions...
+    public function addToCartDetails(Request $request)
+{
+    $cart = new Cart();
+
+    $cart->product_id = $request->product_id;
+    $cart->ip_address = $request->ip();
+    $cart->color = $request->color;
+    $cart->size = $request->size;
+    $cart->qty = $request->qty;
+    $cart->price = $request->price;
+    $cart->save();
+    return redirect()->back()->with('success', 'Product added to cart successfully!');
+
+    
+
+    
+}
   
 }
 

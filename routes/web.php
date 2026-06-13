@@ -25,6 +25,9 @@ Route::get('/payment-policy', [HomeController::class, 'paymentPolicy']);
 Route::get('/about-us', [HomeController::class, 'aboutUs']);
 Route::get('/contact-us', [HomeController::class, 'contactUs']);
 
+//Cart Routes...
+Route::post('/product-details/addtocart', [HomeController::class, 'addToCartDetails']);
+
 //Admin login
 Route::get('/admin/login',[AuthController::class, 'adminLoginForm']);
 
