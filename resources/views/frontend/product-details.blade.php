@@ -185,25 +185,26 @@
         </div>
     </section>
 @endsection
+@push('script')
+
 <script>
-    $(document).ready(function () {
+    let qtyInput = document.getElementById('qty');
+    // let qtyInputValue = document.getElementById('qty').value; //"1"
 
-        // PLUS button
-        $('.qty-plus').on('click', function () {
-            let input = $(this).closest('.qty-box').find('.qty-input');
-            let value = parseInt(input.val()) || 1;
-            input.val(value + 1);
-        });
+    let minusBtn = document.querySelector('.decrement-btn');
+    let plusBtn = document.querySelector('.increment-btn');
 
-        // MINUS button
-        $('.qty-minus').on('click', function () {
-            let input = $(this).closest('.qty-box').find('.qty-input');
-            let value = parseInt(input.val()) || 1;
+    plusBtn.addEventListener('click', function(){
+        if(parseInt(qtyInput.value) < 5){
+            qtyInput.value = parseInt(qtyInput.value)+1;
+        }
+    });
 
-            if (value > 1) {
-                input.val(value - 1);
-            }
-        });
-
+    minusBtn.addEventListener('click', function(){
+       if(parseInt(qtyInput.value) > 1 ){
+            qtyInput.value = parseInt(qtyInput.value)-1;
+       }
     });
 </script>
+    
+@endpush 

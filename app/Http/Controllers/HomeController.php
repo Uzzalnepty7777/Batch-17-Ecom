@@ -9,94 +9,93 @@ use App\Models\Product;
 
 class HomeController extends Controller
 {
-    public function index ()
+    public function index()
     {
         $categories = Category::get();
-        $hotProducts = Product::where('product_type','hot')->get();
-        $newProducts = Product::where('product_type','new')->get();
-        $regularProducts = Product::where('product_type','regular')->get();
-        $discountProducts = Product::where('product_type','discount')->get();
+        $hotProducts = Product::where('product_type', 'hot')->get();
+        $newProducts = Product::where('product_type', 'new')->get();
+        $regularProducts = Product::where('product_type', 'regular')->get();
+        $discountProducts = Product::where('product_type', 'discount')->get();
         return view('frontend.index', compact('categories', 'hotProducts', 'newProducts', 'regularProducts', 'discountProducts'));
     }
-    public function shop ()
+    public function shop()
     {
-        return view ('frontend.shop');
+        return view('frontend.shop');
     }
-    public function returnProcess () 
+    public function returnProcess()
     {
-        return view ('frontend.return-process');
+        return view('frontend.return-process');
     }
-    public function viewCart ()
+    public function viewCart()
     {
-        return view ('frontend.view-cart');
+        return view('frontend.view-cart');
     }
-    public function checkOut ()
+    public function checkOut()
     {
-        return view ('frontend.checkout');
+        return view('frontend.checkout');
     }
-    public function categoryProducts ($slug)
+    public function categoryProducts($slug)
     {
         $category = Category::where('slug', $slug)->first();
         $products = Product::where('cat_id', $category->id)->get();
         $productCount = $products->count();
-        return view ('frontend.category-products', compact('products', 'productCount','category'));
+        return view('frontend.category-products', compact('products', 'productCount', 'category'));
     }
-    public function subCategoryProducts ()
+    public function subCategoryProducts()
     {
-        return view ('frontend.sub-category-products');
+        return view('frontend.sub-category-products');
     }
-    public function productDetails ($slug)
+    public function productDetails($slug)
     {
         $product = Product::where('slug', $slug)->with('color', 'size', 'galleryImage')->first();
         $categories = Category::get();
-        return view ('frontend.product-details', compact('product', 'categories'));
+        return view('frontend.product-details', compact('product', 'categories'));
     }
-    public function viewTypeProducts ()
+    public function viewTypeProducts()
     {
-        return view ('frontend.view-type-products');
+        return view('frontend.view-type-products');
     }
-    public function privacyPolicy ()
+    public function privacyPolicy()
     {
-        return view ('frontend.privacy-policy');
+        return view('frontend.privacy-policy');
     }
-    public function termsConditions ()
+    public function termsConditions()
     {
-        return view ('frontend.terms-conditions');
+        return view('frontend.terms-conditions');
     }
-    public function refundPolicy ()
+    public function refundPolicy()
     {
-        return view ('frontend.refund-policy');
+        return view('frontend.refund-policy');
     }
-    public function paymentPolicy ()
+    public function paymentPolicy()
     {
-        return view ('frontend.payment-policy');
+        return view('frontend.payment-policy');
     }
-    public function aboutUs ()
+    public function aboutUs()
     {
-        return view ('frontend.about-us');
+        return view('frontend.about-us');
     }
-    public function contactUs ()
+    public function contactUs()
     {
-        return view ('frontend.contact-us');
+        return view('frontend.contact-us');
     }
     //Cart Functions...
     public function addToCartDetails(Request $request)
-{
-    $cart = new Cart();
+    {
+        $cart = new Cart();
 
-    $cart->product_id = $request->product_id;
-    $cart->ip_address = $request->ip();
-    $cart->color = $request->color;
-    $cart->size = $request->size;
-    $cart->qty = $request->qty;
-    $cart->price = $request->price;
-    $cart->save();
-    return redirect()->back()->with('success', 'Product added to cart successfully!');
+        $cart->product_id = $request->product_id;
+        $cart->ip_address = $request->ip();
+        $cart->color = $request->color;
+        $cart->size = $request->size;
+        $cart->qty = $request->qty;
+        $cart->price = $request->price;
+        $cart->save();
 
-    
-
-    
+        if ($request->action == 'addToCart') {
+            return redirect()->back();
+        } else {
+            return redirect('/checkout');
+        }
+    }
 }
-  
-}
-
