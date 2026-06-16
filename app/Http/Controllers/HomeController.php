@@ -82,20 +82,51 @@ class HomeController extends Controller
     //Cart Functions...
     public function addToCartDetails(Request $request)
     {
-        $cart = new Cart();
+        $previousCart = Cart::where('product_id', $request->product_id)->where('ip_address', $request->ip())->first();
+        if ($previousCart == null) {
+            $cart = new Cart();
+            $cart->product_id = $request->product_id;
+            $cart->ip_address = $request->ip();
+            $cart->color = $request->color;
+            $cart->size = $request->size;
+            $cart->qty = $request->qty;
+            $cart->price = $request->price;
+            $cart->save();
+        }
+        else {
+            $previousCart->color = $request->color;
+            $previousCart->size = $request->size;
+            $previousCart->qty = $request->qty;
+            $previousCart->price = $request->price;
+            $previousCart->save();
+        }
 
-        $cart->product_id = $request->product_id;
-        $cart->ip_address = $request->ip();
-        $cart->color = $request->color;
-        $cart->size = $request->size;
-        $cart->qty = $request->qty;
-        $cart->price = $request->price;
-        $cart->save();
+
 
         if ($request->action == 'addToCart') {
             return redirect()->back();
         } else {
             return redirect('/checkout');
         }
+    }
+    
+    public function addtoCart(Request $request, $id)
+    {
+       $previousCart = Cart::where('product_id', $id)->where('ip_address', $request->ip())->first();
+        if ($previousCart == null) {
+            $cart = new Cart();
+            $cart->product_id = $id;
+            $cart->ip_address = $request->ip();
+            $cart->qty = 1;
+            $cart->price = $request->price;
+            $cart->save();
+        }
+        else {
+            $previousCart->color = $request->color;
+            $previousCart->size = $request->size;
+            $previousCart->qty = $request->qty;
+            $previousCart->price = $request->price;
+            $previousCart->save();
+        } 
     }
 }
