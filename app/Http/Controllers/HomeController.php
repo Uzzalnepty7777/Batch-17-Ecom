@@ -112,21 +112,20 @@ class HomeController extends Controller
     
     public function addtoCart(Request $request, $id)
     {
-       $previousCart = Cart::where('product_id', $id)->where('ip_address', $request->ip())->first();
+         $previousCart = Cart::where('product_id', $id)->where('ip_address', $request->ip())->first();
+         $product = Product::find($id);
         if ($previousCart == null) {
             $cart = new Cart();
             $cart->product_id = $id;
             $cart->ip_address = $request->ip();
             $cart->qty = 1;
-            $cart->price = $request->price;
+            $cart->price = $product->discount_price ?? $product->regular_price;
             $cart->save();
         }
         else {
-            $previousCart->color = $request->color;
-            $previousCart->size = $request->size;
-            $previousCart->qty = $request->qty;
-            $previousCart->price = $request->price;
+            $previousCart->qty = $previousCart->qty + 1;
             $previousCart->save();
         } 
+        return redirect()->back();
     }
 }
