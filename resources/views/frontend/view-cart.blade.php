@@ -2,7 +2,7 @@
 @section('content')
 	<section class="cart-products-section">
             <div class="container">
-                <a href="index.html" class="continue-shopping-btn">
+                <a href="{{ url('/') }}"class="continue-shopping-btn">
                     <i class="fas fa-long-arrow-alt-left"></i>
                     Continue Shopping
                 </a>
@@ -19,26 +19,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            @foreach ($cartProducts as $cartProduct)
+                                <tr>
                                 <td class="cart-product-image-outer">
-                                    <img src="{{asset('frontend/assets/images/product.png')}}" height="70" width="120">
+                                    <img src="{{asset('admin/product/' . $cartProduct->Product->image)}}" height="70" width="120">
                                 </td>
                                 <td class="cart-product-name-outer">
-                                    Test Product
+                                    {{ $cartProduct->Product->name }}
                                 </td>
                                 <td class="cart-product-price-outer">
-                                    ৳ 300
+                                    ৳ {{ $cartProduct->price }}
                                 </td>
                                 <td class="qty-increment-decrement-outer">
-                                    <input type="number" name="qty" readonly value="300" min="1" />
+                                    <input type="number" name="qty" readonly value="{{ $cartProduct->qty }}" min="1" />
                                 </td>
                                 <td>
-                                    <a href="#" class="remove-product">Remove</a>
+                                    <a href="{{ url('product/deletecart/' . $cartProduct->id) }}" class="remove-product">Remove</a>
                                 </td>
                                 <td class="cart-product-total-outer">
-                                    ৳ 300
+                                    ৳ {{ $cartProduct->price * $cartProduct->qty }}
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
