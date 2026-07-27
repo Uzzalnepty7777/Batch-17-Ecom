@@ -128,4 +128,10 @@ class HomeController extends Controller
         } 
         return redirect()->back();
     }
+    public function deleteFromCart($id) 
+    {
+        $cart=Cart::find($id);
+        $cart->delete();
+        return redirect()->back();
+    }
 }

@@ -74,12 +74,16 @@
                                         </div>
 
                                         <div class="purchase-info-outer">
-                                            <button type="button" class="decrement-btn">-</button>
+                                            <button type="button" class="decrement-btn">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
 
                                             <input type="number" readonly name="qty" value="1" min="1"
                                                 id="qty" style="height: 30px">
 
-                                            <button type="button" class="increment-btn">+</button>
+                                            <button type="button" class="increment-btn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
 
                                             <div>
                                                 <button type="submit" name="action" value="addToCart" id="addToCart"
@@ -185,26 +189,3 @@
         </div>
     </section>
 @endsection
-@push('script')
-
-<script>
-    let qtyInput = document.getElementById('qty');
-    // let qtyInputValue = document.getElementById('qty').value; //"1"
-
-    let minusBtn = document.querySelector('.decrement-btn');
-    let plusBtn = document.querySelector('.increment-btn');
-
-    plusBtn.addEventListener('click', function(){
-        if(parseInt(qtyInput.value) < 5){
-            qtyInput.value = parseInt(qtyInput.value)+1;
-        }
-    });
-
-    minusBtn.addEventListener('click', function(){
-       if(parseInt(qtyInput.value) > 1 ){
-            qtyInput.value = parseInt(qtyInput.value)-1;
-       }
-    });
-</script>
-    
-@endpush 

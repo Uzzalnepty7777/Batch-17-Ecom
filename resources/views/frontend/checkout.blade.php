@@ -61,22 +61,22 @@
                                             <span class="checkout-item-count">
                                                 Color: 
                                             </span>
-                                            <div class="checkout-product-incre-decre">
+                                            {{-- <div class="checkout-product-incre-decre">
                                                 <button type="button" title="Decrement" class="qty-decrement-btn">
                                                     <i class="fas fa-minus"></i>
                                                 </button>
-                                                <input type="number" readonly name="" placeholder="Qty" min="1" style="height: 35px;" value="1">
+                                                <input type="number" readonly name="" placeholder="Qty" min="1" style="height: 30px;" value="1">
                                                 <button type="button" title="Increment" class="qty-increment-btn">
                                                     <i class="fas fa-plus"></i>
                                                 </button>                                                
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
-                                    <div class="checkout-item-right">
+                                    {{-- <div class="checkout-item-right">
                                         <a href="#" class="delete-btn">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="sub-total-wrap">
                                     <div class="sub-total-item">
