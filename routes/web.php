@@ -30,6 +30,9 @@ Route::post('/product-details/addtocart', [HomeController::class, 'addToCartDeta
 Route::get('/product/addtocart/{id}', [HomeController::class, 'addToCart']);
 Route::get('/product/deletecart/{id}', [HomeController::class, 'deleteFromCart']);
 
+//Checkout Routes...
+Route::post('/store-order', [HomeController::class, 'confirmOrder']);
+
 //Admin login
 Route::get('/admin/login',[AuthController::class, 'adminLoginForm']);
 
