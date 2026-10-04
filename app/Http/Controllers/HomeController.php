@@ -149,6 +149,13 @@ class HomeController extends Controller
         $order->charge = $request->charge;
         $order->price = $request->grandTotalInput;
         $order->save();
+
+        //Order Details...
+        $carts = Cart::where('ip_address', $request->ip())->get();
+        foreach ($carts as $cartProduct) {
+            $orderDetails = new OrderDetails();
+            
+        }
         return redirect()->back();
 
     }
