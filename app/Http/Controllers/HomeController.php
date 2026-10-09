@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\OrderDetails;
 
 class HomeController extends Controller
 {
@@ -154,9 +155,29 @@ class HomeController extends Controller
         $carts = Cart::where('ip_address', $request->ip())->get();
         foreach ($carts as $cartProduct) {
             $orderDetails = new OrderDetails();
+            $orderDetails->order_id = $order->id;
+            $orderDetails->product_id = $cartProduct->product_id;
+            $orderDetails->color = $cartProduct->color;
+            $orderDetails->size = $cartProduct->size;
+            $orderDetails->qty = $cartProduct->qty;
+            $orderDetails->price = $cartProduct->price;
+
+            $orderDetails->save();
+            $cartProduct->delete();
             
         }
-        return redirect()->back();
+        return redirect('success-order/'. $order->id);
 
+    }
+    public function successOrder ($orderId)
+    {
+        $order = Order::where('invoice_number', $orderId)->first();
+        if($order == null){
+            toastr()->error('Invalid OrderId');
+            return redirect('/');
+        }
+        else{
+            return view('frontend.thankyou', compact('order'));
+        }
     }
 }
